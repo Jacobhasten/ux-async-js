@@ -4,6 +4,9 @@ window.onload = function () { // Run this once the page has loaded.
     function searchGithub() {
         const url = "https://api.github.com/search/users?q="
         const searchUserText = document.querySelector("#searchUser").value;
+        fetch(url + searchUserText)
+        .then((response) => response.json())
+        .then((results) => renderUserList(results.items))
 
         // Obtain a list of users from the Github API that match searchUserText
         //  The final result will contain an array under the key 'items'
